@@ -1,0 +1,4 @@
+name: keyball_duplex_kscan
+build:
+  cmake: .
+  kconfig: Kconfig

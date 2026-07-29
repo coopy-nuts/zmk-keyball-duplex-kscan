@@ -1,1 +1,11 @@
+DT_COMPAT_ZMK_KSCAN_KEYBALL_DUPLEX := zmk,kscan-keyball-duplex
 
+config ZMK_KSCAN_KEYBALL_DUPLEX
+    bool "Keyball-style duplex matrix kscan driver"
+    default $(dt_compat_enabled,$(DT_COMPAT_ZMK_KSCAN_KEYBALL_DUPLEX))
+    select GPIO
+    select ZMK_KSCAN
+    help
+      Enable the Japanese duplex-matrix kscan driver used by Keyball-style
+      boards, where the row and column pins are each scanned in both
+      directions to double the number of usable columns.

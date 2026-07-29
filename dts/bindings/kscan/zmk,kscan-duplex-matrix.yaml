@@ -1,0 +1,67 @@
+description: |
+  Keyball-style "Japanese duplex matrix" GPIO kscan driver.
+
+  Scans the same physical pins in two directions to double the
+  number of logical columns without adding extra GPIOs, matching
+  the QMK Keyball matrix.c behaviour:
+
+    Phase A (row -> col):  each row pin is driven, each col pin is read
+                            -> fills logical columns [0 .. N_COLS-1]
+    Phase B (col -> row):  each col pin is driven, each row pin is read
+                            -> fills logical columns [N_COLS .. 2*N_COLS-1]
+
+  Example (Keyball61, one hand):
+
+    kscan0: kscan_duplex {
+        compatible = "zmk,kscan-keyball-duplex";
+        wakeup-source;
+        row-gpios =
+            <&pro_micro 4  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>, // D4
+            <&pro_micro 5  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>, // C6
+            <&pro_micro 6  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>, // D7
+            <&pro_micro 7  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>, // E6
+            <&pro_micro 8  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>; // B4
+        col-gpios =
+            <&pro_micro 21 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>, // F4 / A3
+            <&pro_micro 20 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>, // F5 / A2
+            <&pro_micro 19 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>, // F6 / A1
+            <&pro_micro 18 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>; // F7 / A0
+    };
+
+  Resulting logical matrix size is rows = len(row-gpios),
+  columns = len(col-gpios) * 2. Use this size in your matrix transform.
+
+compatible: "zmk,kscan-keyball-duplex"
+
+include: kscan.yaml
+
+properties:
+  row-gpios:
+    type: phandle-array
+    required: true
+    description: Physical row GPIOs (also read as inputs during phase B).
+
+  col-gpios:
+    type: phandle-array
+    required: true
+    description: Physical column GPIOs (also read as inputs during phase A).
+
+  debounce-press-ms:
+    type: int
+    default: 5
+    description: Debounce time for key press in milliseconds.
+
+  debounce-release-ms:
+    type: int
+    default: 5
+    description: Debounce time for key release in milliseconds.
+
+  poll-period-ms:
+    type: int
+    default: 5
+    description: Time between scans in milliseconds.
+
+  settle-time-us:
+    type: int
+    default: 5
+    description: Delay after driving a pin before reading, to let the line settle.

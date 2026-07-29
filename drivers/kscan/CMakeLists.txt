@@ -1,0 +1,2 @@
+zephyr_library()
+zephyr_library_sources_ifdef(CONFIG_ZMK_KSCAN_KEYBALL_DUPLEX kscan_keyball_duplex.c)

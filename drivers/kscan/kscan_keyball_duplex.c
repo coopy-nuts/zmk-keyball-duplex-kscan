@@ -220,9 +220,18 @@ static int kscan_keyball_duplex_init(const struct device *dev) {
 
 #define KSCAN_KEYBALL_DUPLEX_INIT(n)                                                             \
     static const struct gpio_dt_spec kscan_keyball_duplex_rows_##n[] = {                         \
-        DT_INST_FOREACH_PROP_ELEM_SEP(n, row_gpios, GPIO_DT_SPEC_GET_BY_IDX, (,))};               \
+        GPIO_DT_SPEC_GET_BY_IDX(DT_DRV_INST(n), row_gpios, 0),                                   \
+        GPIO_DT_SPEC_GET_BY_IDX(DT_DRV_INST(n), row_gpios, 1),                                   \
+        GPIO_DT_SPEC_GET_BY_IDX(DT_DRV_INST(n), row_gpios, 2),                                   \
+        GPIO_DT_SPEC_GET_BY_IDX(DT_DRV_INST(n), row_gpios, 3),                                   \
+        GPIO_DT_SPEC_GET_BY_IDX(DT_DRV_INST(n), row_gpios, 4),                                   \
+    };                                                                                            \
     static const struct gpio_dt_spec kscan_keyball_duplex_cols_##n[] = {                         \
-        DT_INST_FOREACH_PROP_ELEM_SEP(n, col_gpios, GPIO_DT_SPEC_GET_BY_IDX, (,))};               \
+        GPIO_DT_SPEC_GET_BY_IDX(DT_DRV_INST(n), col_gpios, 0),                                   \
+        GPIO_DT_SPEC_GET_BY_IDX(DT_DRV_INST(n), col_gpios, 1),                                   \
+        GPIO_DT_SPEC_GET_BY_IDX(DT_DRV_INST(n), col_gpios, 2),                                   \
+        GPIO_DT_SPEC_GET_BY_IDX(DT_DRV_INST(n), col_gpios, 3),                                   \
+    };                                                                                            \
     static struct cell_state                                                                     \
         kscan_keyball_duplex_cells_##n[INST_ROWS(n) * INST_COLS_LOGICAL(n)];                     \
     static const struct kscan_keyball_duplex_config kscan_keyball_duplex_config_##n = {          \

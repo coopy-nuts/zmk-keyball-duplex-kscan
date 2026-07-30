@@ -1,0 +1,23 @@
+/*
+ * 使い方:
+ *   1. keyball61.dtsi の default_transform をこれに置き換える
+ *      (columns を 13 -> 16 に、mapを全部これに差し替え)
+ *   2. keymap.keymap の一番上の layer (default layer) の bindings を
+ *      下の KEYMAP と同じ並び・同じ個数にする(このフォルダ内にサンプル有）
+ *   3. 両手ビルドし直して、1キーずつ押して動くか確認
+ * 右手は col-offset=8 にしてください(duplexで論理列が8列/手になったため、前の"7"のままだと合いません)。
+ */
+
+    default_transform: keymap_transform_0 {
+        compatible = "zmk,matrix-transform";
+        columns = <16>;
+        rows = <5>;
+
+        map = <
+            RC(0,4)  RC(0,5)  RC(0,6)  RC(0,0)  RC(0,1)  RC(0,2)                                        RC(0,9) RC(0,10) RC(0,11) RC(0,13) RC(0,14) RC(0,15)
+            RC(1,4)  RC(1,5)  RC(1,6)  RC(1,0)  RC(1,1)  RC(1,2)                                        RC(1,9) RC(1,10) RC(1,11) RC(1,13) RC(1,14) RC(1,15)
+            RC(2,4)  RC(2,5)  RC(2,6)  RC(2,0)  RC(2,1)  RC(2,2)                                        RC(2,9) RC(2,10) RC(2,11) RC(2,13) RC(2,14) RC(2,15)
+            RC(3,4)  RC(3,5)  RC(3,6)  RC(3,0)  RC(3,1)  RC(3,2)  RC(3,3)                      RC(3,8)  RC(3,9) RC(3,10) RC(3,11) RC(3,13) RC(3,14) RC(3,15)
+            RC(4,4)  RC(4,5)  RC(4,6)  RC(4,0)  RC(4,1)  RC(4,2)  RC(4,3)                      RC(4,8)  RC(4,9)                   RC(4,14) RC(4,15)
+        >;
+    };

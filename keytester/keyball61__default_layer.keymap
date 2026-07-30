@@ -1,0 +1,23 @@
+/*　使い方
+  自分のリポジトリのkeyball61.keymapのdefault_layerをこのまま置き換える。
+  keyball61.dtsiはコメントの通りに書き換えてある前提(このリポジトリ内のkeyball61__default_transform.dtsi）
+*/
+
+
+        compatible = "zmk,keymap";
+
+        default_layer {
+            bindings = <
+
+            // RC(0,4)  RC(0,5)  RC(0,6)  RC(0,0)  RC(0,1)  RC(0,2)                                        RC(0,9) RC(0,10) RC(0,11) RC(0,13) RC(0,14) RC(0,15)
+               &kp N1   &kp N2   &kp N3   &kp N4   &kp N5   &kp N6                                         &kp N7  &kp N8   &kp N9   &kp N0   &kp MINUS &kp EQUAL
+            // RC(1,4)  RC(1,5)  RC(1,6)  RC(1,0)  RC(1,1)  RC(1,2)                                        RC(1,9) RC(1,10) RC(1,11) RC(1,13) RC(1,14) RC(1,15)
+               &kp Q    &kp W    &kp E    &kp R    &kp T    &kp Y                                          &kp U   &kp I    &kp O    &kp P    &kp LBKT &kp RBKT
+            // RC(2,4)  RC(2,5)  RC(2,6)  RC(2,0)  RC(2,1)  RC(2,2)                                        RC(2,9) RC(2,10) RC(2,11) RC(2,13) RC(2,14) RC(2,15)
+               &kp A    &kp S    &kp D    &kp F    &kp G    &kp H                                          &kp J    &kp K    &kp L   &kp SEMI &kp SQT  &kp BSLH 
+            // RC(3,4)  RC(3,5)  RC(3,6)  RC(3,0)  RC(3,1)  RC(3,2)  RC(3,3)                      RC(3,8)  RC(3,9) RC(3,10) RC(3,11) RC(3,13) RC(3,14) RC(3,15)
+               &kp Z    &kp X    &kp C    &kp V    &kp B    &kp N    &kp M                        &kp COMMA &kp DOT &kp FSLH &kp LEFT &kp RIGHT &kp UP &kp DOWN
+            // RC(4,4)  RC(4,5)  RC(4,6)  RC(4,0)  RC(4,1)  RC(4,2)  RC(4,3)                      RC(4,8)  RC(4,9)                            RC(4,14) RC(4,15)
+               &kp F1   &kp F2   &kp F3   &kp F4   &kp F5   &kp F6   &kp F7                       &kp F8   &kp F9                             &kp F10  &kp F11
+            >;
+        };

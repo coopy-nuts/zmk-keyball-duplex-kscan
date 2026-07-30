@@ -1,7 +1,7 @@
-/*　使い方
-  自分のリポジトリのkeyball61.keymapのdefault_layerをこのまま置き換える。
-  keyball61.dtsiはコメントの通りに書き換えてある前提(このリポジトリ内のkeyball61__default_transform.dtsi）
-*/
+/* 使い方:
+ *   自分のリポジトリのkeyball61.keymapのdefault_layerをこのまま置き換える。
+ *   keyball61.dtsiはコメントの通りに書き換えてある前提(このリポジトリ内のkeyball61__default_transform.dtsi）
+ */
 
 
         compatible = "zmk,keymap";
